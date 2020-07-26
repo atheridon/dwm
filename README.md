@@ -1,6 +1,8 @@
 # Atheridon's fork of dwm
 
-The [suckless dwm (dynamic window manager)](https://dwm.suckless.org/) with the following patches applied:
+The [suckless dwm (dynamic window manager)](https://dwm.suckless.org/).
+
+## Patches applied
 
 + actualfullscreen
 + alpha
