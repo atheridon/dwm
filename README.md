@@ -5,12 +5,12 @@ The [suckless dwm (dynamic window manager)](https://dwm.suckless.org/).
 ## Patches applied
 
 + actualfullscreen
-+ alpha
 + autostart
 + resizecorners
 + scratchpad
 + stacker 
 + swallow 
++ systray
 + vanitygaps
 
 ## Configuration
