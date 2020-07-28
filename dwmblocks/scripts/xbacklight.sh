@@ -11,7 +11,7 @@ elif [ "$perc_int" -gt "20" ]; then
 	icon="🌓 "
 elif [ "$perc_int" -gt "0" ]; then
 	icon="🌔 "
-elif [ "$perc_int" -eq "0" ]; then
+elif [ "$perc_int" -le "0" ]; then
 	icon="🌕 "
 fi
 

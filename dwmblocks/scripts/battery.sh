@@ -14,6 +14,8 @@ else
 		icon=" "
 	elif [ "$bat" -gt 0 ]; then
 		icon=" "
+	else
+		icon=" "
 	fi
 fi
 
