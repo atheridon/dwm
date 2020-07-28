@@ -23,3 +23,6 @@ Default configuration is stored in `config.def.h`.
 ```
 sudo make clean install
 ```
+
+## dmenu & dwmblocks
+In this repository you can also find my builds of dmenu and dwmblocks.
