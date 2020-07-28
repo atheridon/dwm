@@ -49,11 +49,26 @@ static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
+#define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
+#include "vanitygaps.c"
+
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "[@]",      spiral },
+	{ "[\\]",     dwindle },
+	{ "H[]",      deck },
+	{ "TTT",      bstack },
+	{ "===",      bstackhoriz },
+	{ "HHH",      grid },
+	{ "###",      nrowgrid },
+	{ "---",      horizgrid },
+	{ ":::",      gaplessgrid },
+	{ "|M|",      centeredmaster },
+	{ ">M>",      centeredfloatingmaster },
+	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ NULL,       NULL },
 };
 
 /* key definitions */
@@ -99,7 +114,7 @@ static Key keys[] = {
         { 0,                    	XF86XK_AudioMute,          spawn,  SHCMD("/usr/bin/amixer -q set Master toggle; pkill -RTMIN+1 dwmblocks") },
         { 0,                    	XF86XK_MonBrightnessUp,    spawn,  SHCMD("/usr/bin/xbacklight -inc 2; pkill -RTMIN+2 dwmblocks") },
         { 0,                    	XF86XK_MonBrightnessDown,  spawn,  SHCMD("/usr/bin/xbacklight -dec 2; pkill -RTMIN+2 dwmblocks") },
-	{ MODKEY|ShiftMask,		XK_l,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/lock") },
+	{ MODKEY|ControlMask,		XK_l,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/lock") },
 	{ MODKEY,			XK_e,	   spawn,	   SHCMD("st -e ranger") },
 	{ 0,				XK_Print,  spawn,	   SHCMD("scrot -q 100 ~/tmp/%b%d::%H%M%S.png && notify-send 'Screenshot taken!' && sxiv -t ~/tmp/") },
 	{ ShiftMask,			XK_Print,  spawn,	   SHCMD("sleep 0.2; scrot -q 100 -s ~/tmp/%b%d::%H%M%S.png && notify-send 'Screenshot taken!' && sxiv -t 9999 ~/tmp/") },
@@ -112,6 +127,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+        { MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
+        { MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -0.25} },
+        { MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
 	{ MODKEY|Mod4Mask,              XK_h,      incrgaps,       {.i = +1 } },
 	{ MODKEY|Mod4Mask,              XK_l,      incrgaps,       {.i = -1 } },
 	{ MODKEY|Mod4Mask,              XK_0,      togglegaps,     {0} },
