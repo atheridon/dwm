@@ -36,7 +36,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "microsoft teams - preview", NULL, NULL, 0,  	  1,          0,           0,        -1 },
+	{ "Gimp",    NULL,     NULL,           0,         0,          0,           0,        -1 },
 	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
 	{ "st-256color", NULL, NULL,           0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
@@ -76,30 +77,36 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
-static const char *upvol[] = {"/usr/bin/amixer", "-q", "set", "Master", "5%+", "unmute", NULL};
-static const char *downvol[] = {"/usr/bin/amixer", "-q", "set", "Master", "5%-", "unmute", NULL};
-static const char *mutevol[] = {"/usr/bin/amixer", "-q", "set", "Master", "toggle", NULL};
-static const char *brightup[] = {"/usr/bin/xbacklight", "-inc", "2", NULL};
-static const char *birghtdown[] = {"/usr/bin/xbacklight", "-dec", "2", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|ShiftMask,                push)
 
-	{ 0,                    	XF86XK_AudioRaiseVolume,   spawn,  {.v = upvol } },
-        { 0,                    	XF86XK_AudioLowerVolume,   spawn,  {.v = downvol } },
-        { 0,                    	XF86XK_AudioMute,          spawn,  {.v = mutevol } },
-        { 0,                    	XF86XK_MonBrightnessUp,    spawn,  {.v = brightup } },
-        { 0,                    	XF86XK_MonBrightnessDown,  spawn,  {.v = birghtdown } },
+	TAGKEYS(                        XK_1,                      0)
+	TAGKEYS(                        XK_2,                      1)
+	TAGKEYS(                        XK_3,                      2)
+	TAGKEYS(                        XK_4,                      3)
+	TAGKEYS(                        XK_5,                      4)
+	TAGKEYS(                        XK_6,                      5)
+	TAGKEYS(                        XK_7,                      6)
+	TAGKEYS(                        XK_8,                      7)
+	TAGKEYS(                        XK_9,                      8)
+
+	{ 0,                    	XF86XK_AudioRaiseVolume,   spawn,  SHCMD("/usr/bin/amixer -q set Master 5%+ unmute; pkill -RTMIN+1 dwmblocks") },
+        { 0,                    	XF86XK_AudioLowerVolume,   spawn,  SHCMD("/usr/bin/amixer -q set Master 5%- unmute; pkill -RTMIN+1 dwmblocks") },
+        { 0,                    	XF86XK_AudioMute,          spawn,  SHCMD("/usr/bin/amixer -q set Master toggle; pkill -RTMIN+1 dwmblocks") },
+        { 0,                    	XF86XK_MonBrightnessUp,    spawn,  SHCMD("/usr/bin/xbacklight -inc 2; pkill -RTMIN+2 dwmblocks") },
+        { 0,                    	XF86XK_MonBrightnessDown,  spawn,  SHCMD("/usr/bin/xbacklight -dec 2; pkill -RTMIN+2 dwmblocks") },
+	{ MODKEY|ShiftMask,		XK_l,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/lock") },
+	{ MODKEY,			XK_e,	   spawn,	   SHCMD("st -e ranger") },
+	{ 0,				XK_Print,  spawn,	   SHCMD("scrot -q 100 ~/tmp/%b%d::%H%M%S.png && notify-send 'Screenshot taken!' && sxiv -t ~/tmp/") },
+	{ ShiftMask,			XK_Print,  spawn,	   SHCMD("sleep 0.2; scrot -q 100 -s ~/tmp/%b%d::%H%M%S.png && notify-send 'Screenshot taken!' && sxiv -t 9999 ~/tmp/") },
 
 	{ MODKEY,                       XK_numbersign,  togglescratch,     {.v = scratchpadcmd } },
-
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,             		XK_Return, spawn,          {.v = termcmd } },
-
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
-
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
@@ -108,7 +115,7 @@ static Key keys[] = {
 	{ MODKEY|Mod4Mask,              XK_l,      incrgaps,       {.i = -1 } },
 	{ MODKEY|Mod4Mask,              XK_0,      togglegaps,     {0} },
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_0,      defaultgaps,    {0} },
-	/*{ MODKEY|Mod4Mask|ShiftMask,    XK_h,      incrogaps,      {.i = +1 } },
+	/*{ MODKEY|Mod4Mask|ShiftMask,	XK_h,      incrogaps,      {.i = +1 } },
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_l,      incrogaps,      {.i = -1 } },
 	{ MODKEY|Mod4Mask|ControlMask,  XK_h,      incrigaps,      {.i = +1 } },
 	{ MODKEY|Mod4Mask|ControlMask,  XK_l,      incrigaps,      {.i = -1 } },
@@ -123,27 +130,18 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
-	{ MODKEY,             		XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,			XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY|ShiftMask,		XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
+	{ MODKEY,             		XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ControlMask,           XK_BackSpace, quit,        {0} },
 };
 
