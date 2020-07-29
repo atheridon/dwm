@@ -7,6 +7,7 @@ The [suckless dwm (dynamic window manager)](https://dwm.suckless.org/).
 + actualfullscreen
 + autostart
 + cfacts
++ fixborders
 + resizecorners
 + scratchpad
 + stacker 
