@@ -9,6 +9,7 @@ The [suckless dwm (dynamic window manager)](https://dwm.suckless.org/).
 + cfacts
 + fixborders
 + pertag
++ resetlayout
 + resizecorners
 + scratchpad
 + stacker 
