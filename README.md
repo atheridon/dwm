@@ -14,7 +14,6 @@ The [suckless dwm (dynamic window manager)](https://dwm.suckless.org/).
 + scratchpad
 + stacker 
 + swallow 
-+ systray
 + vanitygaps
 
 ### cfacts + vanitygaps
