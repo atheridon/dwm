@@ -2361,7 +2361,7 @@ updatebars(void)
 		.background_pixmap = ParentRelative,
 		.event_mask = ButtonPressMask|ExposureMask
 	};
-	XClassHint ch = {"dwm", "dwm"};
+	XClassHint ch = {"dwmbar", "dwmbar"};
 	for (m = mons; m; m = m->next) {
 		if (m->barwin)
 			continue;
