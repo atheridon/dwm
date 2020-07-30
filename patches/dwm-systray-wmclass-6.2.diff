@@ -1,3 +1,10 @@
+This patch gives the systray a WM_CLASS()
+Default is WM_CLASS(STRING) = "dwmsystray", "dwmsystray"
+This way you can exclude the shadow on the systray icons
+from picom/compton by adding "class_g = 'dwmsystray'" 
+to shadow-exclude = [] in picom.conf
+---
+
 diff --git a/dwm.c b/dwm.c
 --- a/dwm.c	2020-07-30 13:25:38.717684932 +0200
 +++ b/dwm.c	2020-07-30 13:25:38.717684932 +0200
