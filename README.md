@@ -20,8 +20,8 @@ The [suckless dwm (dynamic window manager)](https://dwm.suckless.org/).
 ### cfacts + vanitygaps
 Big thanks to [bakkeby](https://github.com/bakkeby) for his cfacts-vanitygaps patch that made both work when combined in dwm!
 
-### systray + picom/compton
-Picom (compton) will not put a shadow on the systray icons with this dwm build. Thanks again to [bakkeby](https://github.com/bakkeby) for helping me out with this!
+### systray + picom/compton shadow
+Picom (compton) will not put a shadow on the systray icons with this dwm build. Thanks again to [bakkeby](https://github.com/bakkeby) for helping me out with this! Patch for this can be found in the patches/ directory.
 
 ## Configuration
 
