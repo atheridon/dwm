@@ -18,6 +18,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "IBMPlexMono:size=13" };
 static const char dmenufont[]       = "IBMPlexMono:size=13";
 static const char dmenucolor[]      = "#000000";
+static const char dmenuprompt[]     = "Run:";
 static const char col_black[]	    = "#000000";
 static const char col_gray[]        = "#444444";
 static const char col_white[]	    = "#ffffff";
@@ -89,7 +90,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", dmenucolor, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", dmenucolor, "-p", dmenuprompt, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
