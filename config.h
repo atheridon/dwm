@@ -15,8 +15,8 @@ static const int smartgaps	    = 0;	/* 1 means no outer gap when there is only o
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "IBMPlexMono:semibold:size=13" };
-static const char dmenufont[]       = "IBMPlexMono:semibold:size=13";
+static const char *fonts[]          = { "IBMPlexMono:semibold:size=12" };
+static const char dmenufont[]       = "IBMPlexMono:semibold:size=12";
 static const char dmenucolor[]      = "#000000";
 static const char dmenuprompt[]     = "Run:";
 static const char col_black[]	    = "#000000";
