@@ -20,14 +20,16 @@ static const char dmenufont[]       = "IBMPlexMono:semibold:size=12";
 static const char dmenucolor[]      = "#000000";
 static const char dmenuprompt[]     = "Run:";
 static const char col_black[]	    = "#000000";
-static const char col_gray[]        = "#444444";
+static const char col_gray1[]       = "#444444";
+static const char col_gray2[]       = "#222222";
 static const char col_white[]	    = "#ffffff";
 static const char col_yellow[]	    = "#ffff00";
 static const char col_blue[]	    = "#0356fc";
+static const char col_green[]	    = "#1eff00";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_white, col_black, col_gray },
-	[SchemeSel]  = { col_white, col_blue,  col_blue },
+	[SchemeNorm] = { col_white, col_black, col_gray1 },
+	[SchemeSel]  = { col_black, col_yellow, col_yellow },
 };
 
 /* tagging */
