@@ -1,7 +1,7 @@
 #!/bin/sh
 
 weather=$(curl -s wttr.in/?format=%t)
-icon=""
+icon=""
 
 if [ -z "$weather" ]; then
 	exit

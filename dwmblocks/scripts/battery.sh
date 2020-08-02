@@ -4,7 +4,7 @@ bat=`acpi -b | grep -P -o '[0-9]+(?=%)'`
 bat_status=`acpi -b | cut -f 3 -d " "`
 
 if [[ $bat_status == "Charging," || $bat_status == "Full," ]]; then
-	icon="🔌 "
+	icon=" "
 else
 	if [ "$bat" -gt 80 ]; then
 		icon=" "

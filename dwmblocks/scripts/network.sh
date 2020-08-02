@@ -7,7 +7,7 @@ esac
 
 case "$(cat /sys/class/net/e*/operstate 2>/dev/null)" in
 	down) eth="" ;;
-	up) eth="  $(ip -4 addr show enp4s0f1 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')" ;;
+	up) eth="  $(ip -4 addr show enp4s0f1 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')" ;;
 esac
 
 if [[ -z "$wifi" && -z "$eth" ]]; then
