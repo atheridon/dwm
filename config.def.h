@@ -17,7 +17,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { 
 	"IBMPlexMono:semibold:size=12",
-        "SymbolsNerdFont:size=12",	
+        "SymbolsNerdFont:size=13",	
 };
 static const char dmenufont[]       = "IBMPlexMono:semibold:size=12";
 static const char dmenubg[]         = "#000000";
