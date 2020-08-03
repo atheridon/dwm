@@ -15,7 +15,10 @@ static const int smartgaps	    = 0;	/* 1 means no outer gap when there is only o
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "IBMPlexMono:semibold:size=12" };
+static const char *fonts[]          = { 
+	"IBMPlexMono:semibold:size=12",
+        "SymbolsNerdFont:size=12",	
+};
 static const char dmenufont[]       = "IBMPlexMono:semibold:size=12";
 static const char dmenubg[]         = "#000000";
 static const char dmenuprompt[]     = "Run:";
@@ -123,8 +126,8 @@ static Key keys[] = {
 	{ 0,                    	XF86XK_AudioRaiseVolume,   spawn,  SHCMD("/usr/bin/amixer -q set Master 5%+ unmute; pkill -RTMIN+1 dwmblocks") },
         { 0,                    	XF86XK_AudioLowerVolume,   spawn,  SHCMD("/usr/bin/amixer -q set Master 5%- unmute; pkill -RTMIN+1 dwmblocks") },
         { 0,                    	XF86XK_AudioMute,          spawn,  SHCMD("/usr/bin/amixer -q set Master toggle; pkill -RTMIN+1 dwmblocks") },
-        { 0,                    	XF86XK_MonBrightnessUp,    spawn,  SHCMD("/usr/bin/xbacklight -inc 2; pkill -RTMIN+2 dwmblocks") },
-        { 0,                    	XF86XK_MonBrightnessDown,  spawn,  SHCMD("/usr/bin/xbacklight -dec 2; pkill -RTMIN+2 dwmblocks") },
+        { 0,                    	XF86XK_MonBrightnessUp,    spawn,  SHCMD("/usr/bin/xbacklight -inc 5; pkill -RTMIN+2 dwmblocks") },
+        { 0,                    	XF86XK_MonBrightnessDown,  spawn,  SHCMD("/usr/bin/xbacklight -dec 5; pkill -RTMIN+2 dwmblocks") },
 	{ MODKEY|ShiftMask,		XK_e,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/pdmenu") },
 	{ MODKEY|ShiftMask,		XK_p,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/xdisplay") },
 	{ MODKEY|ControlMask,		XK_l,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/lock") },
