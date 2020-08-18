@@ -185,7 +185,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY|ControlMask,           XK_BackSpace, quit,        {0} },
+	{ Mod1Mask|ControlMask,         XK_BackSpace, quit,        {0} },
 };
 
 /* button definitions */
