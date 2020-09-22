@@ -931,7 +931,7 @@ drawbar(Monitor *m)
 		stw = getsystraywidth();
 
 	/* draw status first so it can be overdrawn by tags later */
-	if (m == selmon) { /* status is only drawn on selected monitor */
+	if (m == selmon || 1) { /* status is only drawn on selected monitor */
 		drw_setscheme(drw, scheme[SchemeNorm]);
 		sw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
 		drw_text(drw, m->ww - sw - stw, 0, sw, bh, 0, stext, 0);
@@ -1316,6 +1316,8 @@ manage(Window w, XWindowAttributes *wa)
 	updatewindowtype(c);
 	updatesizehints(c);
 	updatewmhints(c);
+	c->x = c->mon->mx + (c->mon->mw - WIDTH(c)) / 2;
+	c->y = c->mon->my + (c->mon->mh - HEIGHT(c)) / 2;
 	XSelectInput(dpy, w, EnterWindowMask|FocusChangeMask|PropertyChangeMask|StructureNotifyMask);
 	grabbuttons(c, 0);
 	if (!c->isfloating)
@@ -2579,9 +2581,11 @@ updatesizehints(Client *c)
 void
 updatestatus(void)
 {
+	Monitor* m;
 	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
 		strcpy(stext, "dwm-"VERSION);
-	drawbar(selmon);
+	for (m = mons; m; m = m->next)
+		drawbar(m);
 	if (showsystray)
 		updatesystray();
 }

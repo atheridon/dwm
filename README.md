@@ -8,13 +8,13 @@ The [suckless dwm (dynamic window manager)](https://dwm.suckless.org/).
 + alpha
 + autostart
 + cfacts
-+ fixborders
 + hide vacant tags
 + pertag
 + resetlayout
 + resizecorners
 + scratchpad
 + stacker 
++ statusallmons
 + swallow 
 + systray
 + vanitygaps
