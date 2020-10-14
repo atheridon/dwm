@@ -17,7 +17,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { 
 	"IBMPlexMono:semibold:size=12",
-        "SymbolsNerdFont:size=13",	
+	"SymbolsNerdFont:size=13",	
 };
 static const char dmenufont[]       = "IBMPlexMono:semibold:size=12";
 static const char dmenubg[]         = "#000000";
@@ -109,7 +109,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 //static const char *dmenucmd[] = { "dmenu_run", "-c", "-g", "3", "-l", "10", "-fn", dmenufont, "-nb", dmenubg, "-p", dmenuprompt, NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", dmenubg, "-p", dmenuprompt, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "st -e tmux", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "90x25", NULL };
 
