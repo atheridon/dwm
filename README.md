@@ -9,6 +9,7 @@ The [suckless dwm (dynamic window manager)](https://dwm.suckless.org/).
 + autostart
 + cfacts
 + hide vacant tags
++ noborder
 + pertag
 + resetlayout
 + resizecorners
