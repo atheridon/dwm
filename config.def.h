@@ -109,7 +109,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 //static const char *dmenucmd[] = { "dmenu_run", "-c", "-g", "3", "-l", "10", "-fn", dmenufont, "-nb", dmenubg, "-p", dmenuprompt, NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", dmenubg, "-p", dmenuprompt, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "st", "-e", "tmux", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "90x25", NULL };
 
@@ -131,30 +131,30 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 
-	{ 0,                    	XF86XK_AudioRaiseVolume,   spawn,  SHCMD("/usr/bin/amixer -q set Master 5%+ unmute; pkill -RTMIN+1 dwmblocks") },
-        { 0,                    	XF86XK_AudioLowerVolume,   spawn,  SHCMD("/usr/bin/amixer -q set Master 5%- unmute; pkill -RTMIN+1 dwmblocks") },
-        { 0,                    	XF86XK_AudioMute,          spawn,  SHCMD("/usr/bin/amixer -q set Master toggle; pkill -RTMIN+1 dwmblocks") },
-        { 0,                    	XF86XK_MonBrightnessUp,    spawn,  SHCMD("/usr/bin/xbacklight -inc 2; pkill -RTMIN+2 dwmblocks") },
-        { 0,                    	XF86XK_MonBrightnessDown,  spawn,  SHCMD("/usr/bin/xbacklight -dec 2; pkill -RTMIN+2 dwmblocks") },
-	{ MODKEY|ShiftMask,		XK_e,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/pdmenu") },
-	{ MODKEY|ShiftMask,		XK_p,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/xdisplay") },
-	{ MODKEY|ControlMask,		XK_l,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/lock") },
-	{ MODKEY,			XK_e,	   spawn,	   SHCMD("st -e nnn") },
-	{ 0,				XK_Print,  spawn,	   SHCMD("scrot -q 100 ~/tmp/%b%d::%H%M%S.png && notify-send 'Screenshot taken!' && sxiv -t ~/tmp/") },
-	{ ShiftMask,			XK_Print,  spawn,	   SHCMD("sleep 0.2; scrot -q 100 -s ~/tmp/%b%d::%H%M%S.png && notify-send 'Screenshot taken!' && sxiv -t 9999 ~/tmp/") },
-	{ MODKEY,			XK_t,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/todo") },
+	{ 0,							XF86XK_AudioRaiseVolume,   spawn,  SHCMD("/usr/bin/amixer -q set Master 5%+ unmute; pkill -RTMIN+1 dwmblocks") },
+    { 0,							XF86XK_AudioLowerVolume,   spawn,  SHCMD("/usr/bin/amixer -q set Master 5%- unmute; pkill -RTMIN+1 dwmblocks") },
+    { 0,							XF86XK_AudioMute,          spawn,  SHCMD("/usr/bin/amixer -q set Master toggle; pkill -RTMIN+1 dwmblocks") },
+    { 0,							XF86XK_MonBrightnessUp,    spawn,  SHCMD("/usr/bin/xbacklight -inc 2; pkill -RTMIN+2 dwmblocks") },
+	{ 0,							XF86XK_MonBrightnessDown,  spawn,  SHCMD("/usr/bin/xbacklight -dec 2; pkill -RTMIN+2 dwmblocks") },
+	{ MODKEY|ShiftMask,				XK_e,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/pdmenu") },
+	{ MODKEY|ShiftMask,				XK_p,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/xdisplay") },
+	{ MODKEY|ControlMask,			XK_l,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/lock") },
+	{ MODKEY,						XK_e,	   spawn,	   SHCMD("st -e nnn") },
+	{ 0,							XK_Print,  spawn,	   SHCMD("scrot -q 100 ~/tmp/%b%d::%H%M%S.png && notify-send 'Screenshot taken!' && sxiv -t ~/tmp/") },
+	{ ShiftMask,					XK_Print,  spawn,	   SHCMD("sleep 0.2; scrot -q 100 -s ~/tmp/%b%d::%H%M%S.png && notify-send 'Screenshot taken!' && sxiv -t 9999 ~/tmp/") },
+	{ MODKEY,						XK_t,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/todo") },
 
 	{ MODKEY,                       XK_numbersign,  togglescratch,     {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,             		XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,             			XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-        { MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
-        { MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -0.25} },
-        { MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
+    { MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
+    { MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -0.25} },
+    { MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
 	{ MODKEY|Mod1Mask,              XK_h,      incrgaps,       {.i = +10 } },
 	{ MODKEY|Mod1Mask,              XK_l,      incrgaps,       {.i = -10 } },
 	{ MODKEY|Mod1Mask,              XK_0,      togglegaps,     {0} },
@@ -177,14 +177,14 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_d,      shiftview,      { .i = -1 } },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,		XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY|ShiftMask,		XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY|ShiftMask,				XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY|ShiftMask,				XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ShiftMask,             XK_w,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY|ShiftMask,		XK_z,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY|ShiftMask,				XK_z,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY,			XK_r,	   resetlayout,    {0} },
+	{ MODKEY,						XK_r,	   resetlayout,    {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,             		XK_f,      togglefullscr,  {0} },
+	{ MODKEY,             			XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
