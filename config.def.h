@@ -141,7 +141,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,			XK_l,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/lock") },
 	{ MODKEY,						XK_e,	   spawn,	   SHCMD("st -e nnn -e") },
 	{ 0,							XK_Print,  spawn,	   SHCMD("scrot -q 100 ~/tmp/%b%d::%H%M%S.png && notify-send 'Screenshot taken!' && sxiv -t ~/tmp/") },
-	{ ShiftMask,					XK_Print,  spawn,	   SHCMD("sleep 0.2; scrot -q 100 -s ~/tmp/%b%d::%H%M%S.png && notify-send 'Screenshot taken!' && sxiv -t 9999 ~/tmp/") },
+	{ ShiftMask,					XK_Print,  spawn,	   SHCMD("sleep 0.2; scrot -q 100 -sfl style=solid,width=2,color=green ~/tmp/%b%d::%H%M%S.png && notify-send 'Screenshot taken!' && sxiv -t 9999 ~/tmp/") },
 	{ MODKEY,						XK_t,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/todo") },
 
 	{ MODKEY,                       XK_numbersign,  togglescratch,     {.v = scratchpadcmd } },
