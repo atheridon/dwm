@@ -1,4 +1,4 @@
-# Atheridon's fork of dwm
+# Fork of dwm
 
 The [suckless dwm (dynamic window manager)](https://dwm.suckless.org/).
 
