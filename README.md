@@ -6,6 +6,7 @@ The [suckless dwm (dynamic window manager)](https://dwm.suckless.org/).
 
 + actualfullscreen
 + alpha
++ alwayscenter
 + autostart
 + cfacts
 + hide vacant tags

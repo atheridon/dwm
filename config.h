@@ -136,6 +136,7 @@ static Key keys[] = {
     { 0,							XF86XK_AudioMute,          spawn,  SHCMD("/usr/bin/amixer -q set Master toggle; pkill -RTMIN+1 dwmblocks") },
     { 0,							XF86XK_MonBrightnessUp,    spawn,  SHCMD("/usr/bin/xbacklight -inc 2; pkill -RTMIN+2 dwmblocks") },
 	{ 0,							XF86XK_MonBrightnessDown,  spawn,  SHCMD("/usr/bin/xbacklight -dec 2; pkill -RTMIN+2 dwmblocks") },
+
 	{ MODKEY|ShiftMask,				XK_e,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/pdmenu") },
 	{ MODKEY|ShiftMask,				XK_p,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/xdisplay") },
 	{ MODKEY|ControlMask,			XK_l,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/lock") },
