@@ -109,7 +109,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 //static const char *dmenucmd[] = { "dmenu_run", "-c", "-g", "3", "-l", "10", "-fn", dmenufont, "-nb", dmenubg, "-p", dmenuprompt, NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", dmenubg, "-p", dmenuprompt, NULL };
-static const char *termcmd[]  = { "st", "-e", "tmux", NULL };
+static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "90x25", NULL };
 
@@ -137,13 +137,13 @@ static Key keys[] = {
     { 0,							XF86XK_MonBrightnessUp,    spawn,  SHCMD("/usr/bin/xbacklight -inc 2; pkill -RTMIN+2 dwmblocks") },
 	{ 0,							XF86XK_MonBrightnessDown,  spawn,  SHCMD("/usr/bin/xbacklight -dec 2; pkill -RTMIN+2 dwmblocks") },
 
-	{ MODKEY|ShiftMask,				XK_e,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/pdmenu") },
-	{ MODKEY|ShiftMask,				XK_p,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/xdisplay") },
-	{ MODKEY|ControlMask,			XK_l,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/lock") },
+	{ MODKEY|ShiftMask,				XK_e,	   spawn,	   SHCMD("~/nextcloud/Linux/scripts/pdmenu") },
+	{ MODKEY|ShiftMask,				XK_p,	   spawn,	   SHCMD("~/nextcloud/Linux/scripts/xdisplay") },
+	{ MODKEY|ControlMask,			XK_l,	   spawn,	   SHCMD("~/nextcloud/Linux/scripts/lock") },
 	{ MODKEY,						XK_e,	   spawn,	   SHCMD("st -e nnn -e") },
 	{ 0,							XK_Print,  spawn,	   SHCMD("scrot -q 100 ~/tmp/%b%d::%H%M%S.png && notify-send 'Screenshot taken!' && sxiv -t ~/tmp/") },
 	{ ShiftMask,					XK_Print,  spawn,	   SHCMD("sleep 0.2; scrot -q 100 -sfl style=solid,width=2,color=green ~/tmp/%b%d::%H%M%S.png && notify-send 'Screenshot taken!' && sxiv -t 9999 ~/tmp/") },
-	{ MODKEY,						XK_t,	   spawn,	   SHCMD("~/owncloud/Linux/scripts/todo") },
+	{ MODKEY,						XK_t,	   spawn,	   SHCMD("~/nextcloud/Linux/scripts/todo") },
 
 	{ MODKEY,                       XK_numbersign,  togglescratch,     {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
